@@ -1,5 +1,5 @@
 <template>
-  <ol class="StoryList">
+  <ol class="StoryList" :data-type="this.type">
     <story-item v-for="story in stories" :key="story['.key']" :id="story['.value']"></story-item>
   </ol>
 </template>
@@ -13,12 +13,27 @@ export default {
   components: {
     StoryItem,
   },
+  props: ['type'],
   data() {
     return {
+      stories: [],
     };
   },
-  firebase: {
-    stories: db.ref('/v0/topstories').limitToFirst(25),
+  watch: {
+    type() {
+      this.getStories();
+    },
+  },
+  created() {
+    this.getStories();
+  },
+  methods: {
+    getStories() {
+      if (this.stories.length) {
+        this.$unbind('stories');
+      }
+      this.$bindAsArray('stories', db.ref(`/v0/${this.type}`).limitToFirst(25));
+    },
   },
 };
 </script>
