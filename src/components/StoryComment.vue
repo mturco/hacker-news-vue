@@ -62,6 +62,7 @@ export default {
     padding: 0;
     background: none;
     border: 0;
+    color: @faint-text;
     cursor: pointer;
     font-family: monospace;
 
