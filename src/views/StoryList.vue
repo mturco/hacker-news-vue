@@ -1,7 +1,7 @@
 <template>
-  <ul class="StoryList">
+  <ol class="StoryList">
     <story-item v-for="story in stories" :key="story['.key']" :id="story['.value']"></story-item>
-  </ul>
+  </ol>
 </template>
 
 <script>
@@ -31,9 +31,15 @@ export default {
   padding: 0;
   margin: 0 auto;
   list-style-type: none;
+  counter-reset: story-index;
+}
+
+.StoryItem::before {
+  content: counter(story-index) ".";
+  counter-increment: story-index;
 }
 
 .StoryItem + .StoryItem {
-  margin-top: 1px;
+  border-top: 1px solid #eee;
 }
 </style>

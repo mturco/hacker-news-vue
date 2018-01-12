@@ -44,7 +44,7 @@ export default {
 @import "../definitions";
 
 .StoryComment {
-  padding: @spacing-md;
+  padding: @spacing-lg;
   border-top: 1px solid @app-bg;
 
   &-author {
@@ -56,7 +56,7 @@ export default {
   }
 
   &-responses {
-    margin-bottom: @spacing-md * -1;
+    margin-bottom: @spacing-lg * -1;
   }
 }
 </style>

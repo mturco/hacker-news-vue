@@ -9,8 +9,8 @@
         <h1 v-else class="Story-title">{{ story.title }}</h1>
       </div>
       <div class="Story-meta">
-        <span class="Story-author">by {{ story.by }}</span>
         <span class="Story-date" :title="story.time | getFormattedDate">{{ story.time | getTimeSince }}</span>
+        <span class="Story-author">by {{ story.by }}</span>
       </div>
       <div v-if="story.text" class="Story-content" v-html="story.text"></div>
     </div>
@@ -60,7 +60,7 @@ export default {
   margin: 0 auto;
 
   &-details {
-    padding: @spacing-md;
+    padding: @spacing-lg;
     background-color: @content-bg;
     margin-bottom: @spacing-sm;
   }

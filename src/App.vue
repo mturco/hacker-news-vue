@@ -30,5 +30,6 @@ body {
   background-color: @app-bg;
   font-size: 16px;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: @text-color;
 }
 </style>

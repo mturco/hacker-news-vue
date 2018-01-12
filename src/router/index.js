@@ -10,6 +10,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/top',
+    },
+    {
+      path: '/top',
       name: 'topstories',
       component: StoryList,
     },

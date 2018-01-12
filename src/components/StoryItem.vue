@@ -1,7 +1,5 @@
 <template>
   <li class="StoryItem" v-if="story.id" :data-id="story.id">
-    <div class="StoryItem-score" :title="`${story.score} points`">{{ story.score }}</div>
-
     <div class="StoryItem-details">
       <div class="StoryItem-header">
         <template v-if="story.url">
@@ -14,16 +12,19 @@
       </div>
 
       <div class="StoryItem-meta">
-        <span class="StoryItem-author">by {{ story.by }}</span>
         <span class="StoryItem-date" :title="story.time | getFormattedDate">{{ story.time | getTimeSince }}</span>
+        <span class="StoryItem-author">by {{ story.by }}</span>
+        <span class="StoryItem-score">({{ story.score }} points)</span>
       </div>
     </div>
 
     <router-link
+      v-if="story.descendants >= 0"
       :to="{ name: 'story', params: { id: story.id }}"
       :title="`${story.descendants} comments`"
       class="StoryItem-comments">
-      {{ story.descendants }}
+      <span class="StoryItem-commentsCount">{{ story.descendants }}</span>
+      <comment-icon width="24" height="24" className="StoryItem-commentsIcon" :text="story.descendants"></comment-icon>
     </router-link>
   </li>
 </template>
@@ -31,6 +32,7 @@
 <script>
 import db from '@/db';
 import { getHost, getTimeSince, getFormattedDate } from '@/filters';
+import CommentIcon from '@/components/CommentIcon';
 
 export default {
   name: 'StoryItem',
@@ -47,6 +49,9 @@ export default {
       },
     };
   },
+  components: {
+    CommentIcon,
+  },
   filters: {
     getHost,
     getTimeSince,
@@ -60,8 +65,38 @@ export default {
 
 .StoryItem {
   display: flex;
-  padding: @spacing-md;
+  padding: @spacing-lg;
   background-color: @content-bg;
+  color: @faint-text;
+
+  &::before {
+    min-width: 2ch;
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  &-header {
+    margin-bottom: @spacing-xs;
+  }
+
+  &-title {
+    color: @text-color;
+    line-height: 1.4;
+    text-decoration: none;
+    transition-property: border-color, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    border-bottom: 1px solid transparent;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: @primary-color;
+    }
+
+    &:active {
+      background-color: fade(@primary-color, 15%);
+    }
+  }
 
   &-host,
   &-meta {
@@ -70,23 +105,28 @@ export default {
 
   &-details {
     flex: 1 1 auto;
-    margin: 0 @spacing-sm;
+    margin: 0 @spacing-md;
   }
 
-  &-score,
   &-comments {
     display: flex;
-    align-items: center;
-    font-size: 1.25em;
-  }
-
-  &-score {
-    flex: 0 0 60px;
-    justify-content: center;
-  }
-
-  &-comments {
     flex: 0 0 auto;
+    height: auto;
+    padding: 5px 10px;
+    align-items: center;
+    color: @faint-text;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      color: @primary-color;
+    }
+
+    &Count {
+      margin-right: @spacing-xs;
+      margin-bottom: 4px;
+      font-size: 0.875em;
+    }
   }
 }
 </style>
