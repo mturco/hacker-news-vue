@@ -65,7 +65,7 @@ export default {
 
 .StoryItem {
   display: flex;
-  padding: @spacing-lg;
+  padding: @spacing-md @spacing-lg;
   background-color: @content-bg;
   color: @faint-text;
 
@@ -111,14 +111,13 @@ export default {
   &-comments {
     display: flex;
     flex: 0 0 auto;
-    height: auto;
-    padding: 5px 10px;
     align-items: center;
     color: @faint-text;
     text-decoration: none;
     transition: background-color 0.2s ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: @primary-color;
     }
 

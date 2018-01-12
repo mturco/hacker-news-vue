@@ -1,7 +1,7 @@
 <template>
   <header class="AppBanner">
     <nav class="AppBanner-nav">
-      <router-link to="/" exact class="AppBanner-link"><span class="AppBanner-brand">HN</span></router-link>
+      <router-link to="/" exact class="AppBanner-link AppBanner-link--brand"><span class="AppBanner-brand">HN</span></router-link>
       <router-link to="/top" exact class="AppBanner-link">Top</router-link>
       <router-link to="/new" exact class="AppBanner-link">New</router-link>
       <router-link to="/best" exact class="AppBanner-link">Best</router-link>
@@ -46,6 +46,12 @@ export default {
     text-decoration: none;
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
+
+    &--brand {
+      padding-left: 0;
+      padding-right: 0;
+      margin-right: @spacing-md;
+    }
 
     &.is-active {
       border-bottom-color: #fff;
