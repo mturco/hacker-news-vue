@@ -47,12 +47,30 @@ export default {
   padding: @spacing-lg;
   border-top: 1px solid @app-bg;
 
+  &-meta {
+    font-size: 0.875em;
+  }
+
+  &-date {
+    color: @faint-text;
+  }
+
   &-author {
     font-weight: bold;
   }
 
-  &-meta {
-    margin-bottom: @spacing-sm;
+  &-body {
+    font-size: 0.875em;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+
+    /deep/ p {
+      margin: 0.75em 0;
+    }
+
+    /deep/ pre {
+      overflow-x: auto;
+  }
   }
 
   &-responses {

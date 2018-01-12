@@ -3,7 +3,7 @@
     <div class="Story-details">
       <div class="Story-header">
         <h1 v-if="story.url" class="Story-title">
-          <a :href="story.url">{{ story.title }}</a>
+          <a :href="story.url" class="Story-link">{{ story.title }}</a>
           <span class="Story-host">({{ story.url | getHost }})</span>
         </h1>
         <h1 v-else class="Story-title">{{ story.title }}</h1>
@@ -67,12 +67,32 @@ export default {
 
   &-title {
     display: inline;
-    font-size: 1.5em;
+    font-size: 1.25em;
+    font-weight: 400;
+  }
+
+  &-link {
+    color: @text-color;
+    line-height: 1.4;
+    text-decoration: none;
+    transition-property: border-color, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    border-bottom: 1px solid transparent;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: @primary-color;
+    }
+
+    &:active {
+      background-color: fade(@primary-color, 15%);
+    }
   }
 
   &-host {
     font-weight: normal;
-    font-size: 0.8125em;
+    font-size: 0.7em;
   }
 
   &-meta {
