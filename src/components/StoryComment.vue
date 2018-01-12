@@ -1,7 +1,8 @@
 <template>
-  <div v-if="!comment.deleted" class="StoryComment" :data-id="comment.id">
+  <div v-if="!comment.deleted" class="StoryComment" :class="{ 'is-collapsed': isCollapsed }" :data-id="comment.id">
     <div class="StoryComment-content">
       <div class="StoryComment-meta">
+        <button class="StoryComment-collapseButton" @click="toggleCollapsed()"></button>
         <span class="StoryComment-author">{{ comment.by }}</span>
         <span class="StoryComment-date" :title="comment.time | getFormattedDate">{{ comment.time | getTimeSince }}</span>
       </div>
@@ -23,6 +24,7 @@ export default {
   props: ['id'],
   data() {
     return {
+      isCollapsed: false,
     };
   },
   firebase() {
@@ -37,6 +39,11 @@ export default {
     getTimeSince,
     getFormattedDate,
   },
+  methods: {
+    toggleCollapsed() {
+      this.isCollapsed = !this.isCollapsed;
+    },
+  },
 };
 </script>
 
@@ -49,6 +56,18 @@ export default {
 
   &-meta {
     font-size: 0.875em;
+  }
+
+  &-collapseButton {
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: monospace;
+
+    &::before {
+      content: '[-]';
+    }
   }
 
   &-date {
@@ -70,11 +89,22 @@ export default {
 
     /deep/ pre {
       overflow-x: auto;
-  }
+    }
   }
 
   &-responses {
     margin-bottom: @spacing-lg * -1;
+  }
+
+  &.is-collapsed {
+    .StoryComment-body,
+    .StoryComment-responses {
+      display: none;
+    }
+
+    .StoryComment-collapseButton::before {
+      content: '[+]';
+    }
   }
 }
 </style>
