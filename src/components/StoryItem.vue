@@ -1,5 +1,5 @@
 <template>
-  <li class="StoryItem" v-if="story.id" :data-id="story.id">
+  <li class="StoryItem" v-if="story.id" :data-id="story.id" :data-index="index + 1">
     <div class="StoryItem-details">
       <div class="StoryItem-header">
         <template v-if="story.url">
@@ -36,7 +36,7 @@ import CommentIcon from '@/components/CommentIcon';
 
 export default {
   name: 'StoryItem',
-  props: ['id'],
+  props: ['id', 'index'],
   data() {
     return {
     };
@@ -73,6 +73,7 @@ export default {
     min-width: 2ch;
     line-height: 1.4;
     text-align: right;
+    content: attr(data-index) ".";
   }
 
   &-header {

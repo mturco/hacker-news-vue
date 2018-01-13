@@ -1,7 +1,11 @@
 <template>
   <div class="StoryList" :data-type="type">
-    <ol class="StoryList-list" :style="{ 'counter-reset': `story-index ${startAt}` }">
-      <story-item v-for="story in stories" :key="story['.key']" :id="story['.value']"></story-item>
+    <ol class="StoryList-list">
+      <story-item
+        v-for="story in stories"
+        :key="story['.key']"
+        :id="story['.value']"
+        :index="parseInt(story['.key'], 10)"/>
     </ol>
 
     <div class="StoryList-paging">
@@ -120,14 +124,7 @@ export default {
   }
 }
 
-.StoryItem {
-  &::before {
-    content: counter(story-index) ".";
-    counter-increment: story-index;
-  }
-
-  & + & {
-    border-top: 1px solid #eee;
-  }
+.StoryItem + .StoryItem {
+  border-top: 1px solid #eee;
 }
 </style>
