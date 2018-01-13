@@ -6,6 +6,5 @@ A Hacker News reader built with Vue.js. Mostly a proof of concept. Inspired by t
 
 ## To Do / Not Included
 
-* Pagination
 * Caching (story lists)
 * General performance improvements
