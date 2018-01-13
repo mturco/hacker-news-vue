@@ -9,10 +9,10 @@
         <h1 v-else class="Story-title">{{ story.title }}</h1>
       </div>
       <div class="Story-meta">
+        <span class="Story-author">{{ story.by }}</span>
         <span class="Story-date" :title="story.time | getFormattedDate">{{ story.time | getTimeSince }}</span>
-        <span class="Story-author">by {{ story.by }}</span>
       </div>
-      <div v-if="story.text" class="Story-content" v-html="story.text"></div>
+      <div v-if="story.text" class="Story-content" v-html="`<p>${story.text}`"></div>
     </div>
 
     <div class="Story-comments">
@@ -60,7 +60,7 @@ export default {
   margin: 0 auto;
 
   &-details {
-    padding: @spacing-lg;
+    padding: @spacing-lg @spacing-lg @spacing-sm;
     background-color: @content-bg;
     margin-bottom: @spacing-sm;
   }
@@ -97,6 +97,28 @@ export default {
 
   &-meta {
     margin: @spacing-sm 0;
+    font-size: 0.875em;
+  }
+
+  &-author {
+    font-weight: 700;
+  }
+
+  &-date {
+    color: @faint-text;
+  }
+
+  &-content {
+    line-height: 1.5;
+    overflow-wrap: break-word;
+
+    /deep/ p {
+      margin: 0.75em 0;
+    }
+
+    /deep/ pre {
+      overflow-x: auto;
+    }
   }
 
   &-comments {

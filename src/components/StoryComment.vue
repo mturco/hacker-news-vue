@@ -55,7 +55,7 @@ export default {
   border-top: 1px solid @app-bg;
 
   &-meta {
-    font-size: 0.875em;
+    font-size: 0.8125em;
   }
 
   &-collapseButton {
@@ -80,6 +80,7 @@ export default {
   }
 
   &-body {
+    margin-bottom: @spacing-lg;
     font-size: 0.875em;
     line-height: 1.5;
     overflow-wrap: break-word;
