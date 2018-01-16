@@ -1,7 +1,7 @@
 {
-  "name": "hn-vue",
+  "name": "hacker-news-vue",
   "version": "1.0.0",
-  "description": "A HackerNews reader built with Vue.js",
+  "description": "A Hacker News reader built with Vue.js",
   "author": "Matt Turco <matt.turco@gmail.com>",
   "private": true,
   "scripts": {

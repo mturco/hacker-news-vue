@@ -9,7 +9,7 @@
       <router-link to="/ask" exact class="AppBanner-link">Ask</router-link>
       <router-link to="/jobs" exact class="AppBanner-link">Jobs</router-link>
       <div class="AppBanner-spacer"></div>
-      <a href="https://github.com/mturco/hn-vue" class="AppBanner-link">View Source</a>
+      <a href="https://github.com/mturco/hacker-news-vue" class="AppBanner-link">View Source</a>
     </nav>
   </header>
 </template>
