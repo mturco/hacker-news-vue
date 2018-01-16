@@ -49,10 +49,20 @@ export default {
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
 
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
     &--brand {
       padding-left: 0;
       padding-right: 0;
       margin-right: @spacing-md;
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
     }
 
     &.is-active {
