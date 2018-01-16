@@ -8,6 +8,8 @@
       <router-link to="/show" exact class="AppBanner-link">Show</router-link>
       <router-link to="/ask" exact class="AppBanner-link">Ask</router-link>
       <router-link to="/jobs" exact class="AppBanner-link">Jobs</router-link>
+      <div class="AppBanner-spacer"></div>
+      <a href="https://github.com/mturco/hn-vue" class="AppBanner-link">View Source</a>
     </nav>
   </header>
 </template>
@@ -62,6 +64,10 @@ export default {
     padding: 4px;
     border: 2px solid;
     font-weight: 700;
+  }
+
+  &-spacer {
+    flex: 1 0 0%;
   }
 }
 </style>
